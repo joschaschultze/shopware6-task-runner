@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Connect with Cronjob.de</title>
+        <title lang="de-DE">Mit Cronjob.de verbinden</title>
+
+        <input-field>
+            <name>connect</name>
+            <label>Connection link</label>
+            <label lang="de-DE">Verbindungslink</label>
+            <helpText>Copy the link and open it in your browser. Cronjob.de opens the form with this shop's address and a 5-minute schedule already filled in – you only need to save. If you have no account yet, you can sign up there first; the form follows.</helpText>
+            <helpText lang="de-DE">Link kopieren und im Browser öffnen. Cronjob.de zeigt das Formular mit der Adresse dieses Shops und einem 5-Minuten-Takt schon ausgefüllt – Sie müssen nur noch speichern. Ohne Konto melden Sie sich dort zuerst an, das Formular kommt danach.</helpText>
+            <disabled>true</disabled>
+            <copyable>true</copyable>
+        </input-field>
+
+        <input-field type="bool">
+            <name>adminWorkerOff</name>
+            <label>Switch off the admin worker while the cron service calls</label>
+            <label lang="de-DE">Admin-Worker abschalten, solange der Cron-Dienst aufruft</label>
+            <helpText>The administration then no longer works through the queue itself. If the last successful call is more than 15 minutes ago, the admin worker switches back on by itself – scheduled tasks never stop for good.</helpText>
+            <helpText lang="de-DE">Die Administration arbeitet die Warteschlange dann nicht mehr selbst ab. Liegt der letzte erfolgreiche Aufruf länger als 15 Minuten zurück, schaltet sich der Admin-Worker von selbst wieder ein – die Aufgaben bleiben also nie dauerhaft liegen.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Address for other cron services</title>
+        <title lang="de-DE">Adresse für andere Cron-Dienste</title>
+
+        <input-field>
+            <name>url</name>
+            <label>Address to call</label>
+            <label lang="de-DE">Aufzurufende Adresse</label>
+            <helpText>Call this address every 5 minutes or every minute. Each call queues the due scheduled tasks and works through the message queue for up to 25 seconds.</helpText>
+            <helpText lang="de-DE">Diese Adresse alle 5 Minuten oder jede Minute aufrufen. Jeder Aufruf plant die fälligen Aufgaben ein und arbeitet die Warteschlange bis zu 25 Sekunden lang ab.</helpText>
+            <disabled>true</disabled>
+            <copyable>true</copyable>
+        </input-field>
+
+        <input-field>
+            <name>token</name>
+            <label>Secret token</label>
+            <label lang="de-DE">Geheimer Schlüssel</label>
+            <helpText>Part of the address; without it the address answers "Access denied". If you change it, the address and the connection link change too – update the cronjob afterwards. Emptying the field creates a new token.</helpText>
+            <helpText lang="de-DE">Teil der Adresse; ohne ihn antwortet sie mit „Access denied“. Wenn Sie ihn ändern, ändern sich Adresse und Verbindungslink mit – danach den Cronjob anpassen. Ein leeres Feld erzeugt einen neuen Schlüssel.</helpText>
+        </input-field>
+    </card>
+</config>
