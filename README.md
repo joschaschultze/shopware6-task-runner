@@ -32,12 +32,15 @@ Das Plugin ist für Hosting gedacht, bei dem ein Cronjob nur eine Adresse per `w
    Der grüne Knopf „Code → Download ZIP“ funktioniert nicht direkt, weil der Ordner darin anders heißt.
 2. In der Administration öffnest du **Erweiterungen → Meine Erweiterungen → Erweiterung hochladen**, dann installieren und aktivieren.
 
-Auf der Konsole geht es so: Die ZIP nach `custom/plugins/` entpacken, dann
+Mit Composer ([Packagist](https://packagist.org/packages/cronjob-de/shopware6-task-runner)):
 
 ```
+composer require cronjob-de/shopware6-task-runner
 bin/console plugin:refresh
 bin/console plugin:install --activate CronjobDeTaskRunner
 ```
+
+Ohne Composer auf der Konsole: Die ZIP nach `custom/plugins/` entpacken, dann `bin/console plugin:refresh` und `bin/console plugin:install --activate CronjobDeTaskRunner`.
 
 ## Einrichten
 
@@ -96,7 +99,7 @@ Free plugin (MIT) for Shopware 6.5 to 6.7. Every call of a secret address runs t
 
 While calls keep coming, the admin worker is switched off (optional). It switches back on by itself after 15 minutes without a call.
 
-**Install:** download the **ZIP file** from [Releases](../../releases). GitHub's "Download ZIP" button won't work as is, because the folder name inside is different. Upload it under Extensions → My extensions → Upload extension, then install and activate.
+**Install:** download the **ZIP file** from [Releases](../../releases). GitHub's "Download ZIP" button won't work as is, because the folder name inside is different. Upload it under Extensions → My extensions → Upload extension, then install and activate. With Composer: `composer require cronjob-de/shopware6-task-runner`, then `bin/console plugin:refresh` and `bin/console plugin:install --activate CronjobDeTaskRunner`.
 
 **Set up:** copy the address from the plugin configuration (`https://your-shop.com/api/cronjob-de/run?token=<token>`) and call it every 1 to 5 minutes from any cron service or hosting cron. The caller should wait at least 30 seconds. Otherwise lower the budget with `&time=10` (5–55 s). Instead of `?token=` you can also send the header `X-Cronjob-Token`.
 
